@@ -244,6 +244,10 @@ public class BaseJpaRestfulServer extends RestfulServer {
     loggingInterceptor.setLogExceptions(appProperties.getLogger().getLog_exceptions());
     this.registerInterceptor(loggingInterceptor);
 
+    CustomLoggingInterceptor customLoggingInterceptor = new CustomLoggingInterceptor();
+    this.registerInterceptor(customLoggingInterceptor);
+    ourLog.info("Custom Interceptor registered.");
+
     /*
      * If you are hosting this server at a specific DNS name, the server will try to
      * figure out the FHIR base URL based on what the web container tells it, but
